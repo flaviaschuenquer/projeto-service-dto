@@ -91,8 +91,10 @@ public class Usuario {
 		return id == other.id;
 	}
 	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Usuário: " + this.getEmail() + " - " + "Nome: " + this.getNome();
+	}
+		
 
 }

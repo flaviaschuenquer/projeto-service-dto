@@ -7,7 +7,7 @@ import org.serratec.projetoservicedto.CriptografiaService;
 import org.serratec.projetoservicedto.config.MailConfig;
 import org.serratec.projetoservicedto.dominio.Usuario;
 import org.serratec.projetoservicedto.exception.EmailException;
-import org.serratec.projetoservicedto.repositorio.UsuarioRepository;
+import org.serratec.projetoservicedto.respositorio.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
