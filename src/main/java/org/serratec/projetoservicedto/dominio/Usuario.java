@@ -27,12 +27,19 @@ public class Usuario {
 	}
 	
 	
-	public Usuario(long id, String nome, String email, String senha) {
+	public Usuario(String nome, String email, String senha) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
+	}
+	
+	public long getId() {
+		return this.id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
 	}
 
 

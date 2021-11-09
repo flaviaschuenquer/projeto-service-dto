@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ControllerExceptionHandler {
 	
 	@ExceptionHandler(EmailException.class)
-	
 	protected ResponseEntity<Object> handleEmailException(EmailException ex){
-		EmailException emailException = new EmailException(ex.getMessage());
-		return ResponseEntity.unprocessableEntity().body(emailException);
+		return ResponseEntity.unprocessableEntity().body(ex.getMessage());
 		
 	}
 
