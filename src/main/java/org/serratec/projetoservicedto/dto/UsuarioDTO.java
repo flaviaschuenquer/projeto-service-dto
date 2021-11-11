@@ -1,14 +1,17 @@
 package org.serratec.projetoservicedto.dto;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.serratec.projetoservicedto.dominio.Usuario;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 public class UsuarioDTO {
 	private long id;
 	private String nome;
 	private String email;
+	private String url;
 	
 	
 	public UsuarioDTO() {	
@@ -19,6 +22,7 @@ public class UsuarioDTO {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
+		
 	}
 	
 	//No DTO criamos um construtor e fazemos um De-Para do objeto
@@ -28,6 +32,7 @@ public class UsuarioDTO {
 		this.id = usuario.getId();
 		this.nome = usuario.getNome();
 		this.email = usuario.getEmail();
+		this.url = generateUrlFoto(usuario);
 	}
 	
 	public long getId() {
@@ -49,6 +54,14 @@ public class UsuarioDTO {
 		this.email = email;
 	}
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	public static List<UsuarioDTO> convert(List<Usuario> usuarios){
 		List<UsuarioDTO> usuariosDto = new ArrayList<>();
 		for (Usuario usuario : usuarios) {
@@ -56,5 +69,20 @@ public class UsuarioDTO {
 			usuariosDto.add(usuarioDto);			
 		}
 		return usuariosDto;
-	}		
+	}
+	
+	public static String generateUrlFoto(Usuario usuario) {
+		return UsuarioDTO.generatedUrlFoto(usuario.getId());	
+	}
+	
+	public static String generatedUrlFoto(long idUsuario) {
+		URI uri = ServletUriComponentsBuilder
+				.fromCurrentContextPath()
+				.path("/api/usuario/{id}/foto")
+				.buildAndExpand(idUsuario)
+				.toUri();
+		
+		return uri.toString();	
+	}
 }
+
