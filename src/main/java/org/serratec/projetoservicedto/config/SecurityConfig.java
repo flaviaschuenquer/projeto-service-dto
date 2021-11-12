@@ -57,7 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers(HttpMethod.POST, "/*/usuario/**").anonymous()
 		.antMatchers( "/*/usuario/**").authenticated()
 		.antMatchers("/*/cep/**").authenticated()
-		.anyRequest().authenticated()		
+		//esse abaixo comentado, se descomentar o swagger vai pedir a senha
+		//.anyRequest().authenticated()		
 		.and()
 		.csrf().disable() // https://owasp.org/www-community/attacks/csrf#
 		.formLogin().disable()
