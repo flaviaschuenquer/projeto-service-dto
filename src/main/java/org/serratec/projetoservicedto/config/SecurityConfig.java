@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// /api/pessoas/usuario/1 - ok		
 		.antMatchers( "/h2-console/**").anonymous()		
 		.antMatchers(HttpMethod.POST, "/*/usuario/**").anonymous()
-		.antMatchers( "/*/usuario/**").authenticated()
+		.antMatchers( "/*/usuario/**").anonymous()
 		.antMatchers("/*/cep/**").authenticated()
 		//esse abaixo comentado, se descomentar o swagger vai pedir a senha
 		//.anyRequest().authenticated()		

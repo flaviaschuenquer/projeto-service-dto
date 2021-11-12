@@ -15,9 +15,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
+
 
 @Entity
+@Table(name="USUARIO")
 public class Usuario {
 	
 	@Id
@@ -28,13 +30,14 @@ public class Usuario {
 	private String nome;
 	private String email;
 	private String senha;
+	private int idade;
 	
 	@ManyToOne
 	@JoinColumn(name="id_endereco")
 	private Endereco endereco;
 	    
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY, optional = false)
+    fetch = FetchType.LAZY, optional = true)
 	private Foto foto;
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -92,6 +95,7 @@ public class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -121,6 +125,16 @@ public class Usuario {
 	public void setFuncao(String funcao) {
 		this.funcoes.add(new Funcao(funcao));		
 	}
+
+	public int getIdade() {
+		return idade;
+	}
+
+	public void setIdade(int idade) {
+		this.idade = idade;
+	}
+	
+	
 	
 	
 	//Planilha

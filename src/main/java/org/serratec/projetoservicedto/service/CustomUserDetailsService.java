@@ -9,7 +9,7 @@ import org.serratec.projetoservicedto.dominio.Usuario;
 import org.serratec.projetoservicedto.respositorio.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,4 +47,3 @@ public class CustomUserDetailsService implements UserDetailsService{
 
 	}
 }
-
